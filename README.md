@@ -19,7 +19,7 @@ Or you can download this repo, and install on your own.
 1. Add Items into your Amazon Shopping Cart from Amazon Fresh
 2. Click Checkout
 3. Go thru your shipping information
-4. In the Time-Slot Page, enable this script
+4. In the Time-Slot Page, enable this script, then refresh the page
 4.1 Chrome may pop a notification to let you allow the page to emit a Notification, please allow it.
 5. Keep the Chrome Tab open, and you could minimizes it
 6. Wait for the Notification. Once the script detected an available time-slot, it will emit a Notification
