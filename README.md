@@ -23,6 +23,7 @@ Or you can download this repo, and install on your own.
 4.1 Chrome may pop a notification to let you allow the page to emit a Notification, please allow it.
 5. Keep the Chrome Tab open, and you could minimizes it
 6. Wait for the Notification. Once the script detected an available time-slot, it will emit a Notification
+7. Once you receive your order, please consider tipping the carrier if you can, but make sure the safety of both of you and the carrier. Remember, No Contact! They are exposing themselves to risk to protect us. Thanks!
 
 ## DISCLAIMER about "disappearing" slots
 No guarantee that slots will be found and/or that slots will work. Often you will select a slot but the page will refresh and the slot will disappear. These phantom slots are very common and are unfortunately in Amazon's control, not mine.  Eventually a slot should work. Some users report success of after 20+ tries. Wishing you resilience and hope! Feel free to post concerns in the Issue section.
