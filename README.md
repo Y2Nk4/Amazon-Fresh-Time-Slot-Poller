@@ -16,6 +16,7 @@ Or you can download this repo, and install on your own.
 
 
 ## HOW-TO-USE:
+0. Install [Tampermonkey](https://www.tampermonkey.net/) Extension if you don't have
 1. Add Items into your Amazon Shopping Cart from Amazon Fresh
 2. Click Checkout
 3. Go thru your shipping information
