@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Wanna get some food during the Corona Time?
 // @author       Y2Nk4
-// @match        https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html*
+// @match        https://www.amazon.com/gp/buy/*
 // @grant        none
 // @require      https://unpkg.com/jquery@3.3.1/dist/jquery.min.js
 // ==/UserScript==
@@ -27,32 +27,53 @@
             // Check if the page needs to continue, due to an item become out-stock or other reason.
             // If need, there is no need to do anything else beside to click that button
             // After clicking the button, the page will be automaticlly refreshed
-            if($('input[name=continue-bottom]').length > 0){
-                $('input[name=continue-bottom]').click();
-            }else{
-                $('.ss-carousel-items > li').each((i, el) => {
-                    // Only Detect the first 5 Date
-                    if (i <= 5) {
-                        setTimeout(() => {
-                            $(el).find('.a-button-text').click();
-                            $('.Date-slot-container').each((i, el) => {
-                                if($(el).attr('style').indexOf('block') !== -1){
-                                    if(!!$(el).find('span.a-size-base-plus').text() && !!$(el).find('span.a-size-base-plus').text().replace(/(^\s*)|(\s*$)/g, "") && $(el).find('span.a-size-base-plus').text().indexOf('No attended delivery') !== -1){
-                                        console.log('No time slot yet')
-                                    }else{
-                                        if(Notification.permission !== 'granted') {
+
+            if(window.location.href.indexOf('spc/handlers') !== -1){
+                // In Checkout Page
+                if($('[name="placeYourOrder1"]').length > 0){
+                    new Notification('Good News!', {
+                        dir: 'ltr',
+                        body: '\n Time Slot is ALAILABLE!!! \n Go Check it Out!!!',
+                        icon: cart_icon
+                    });
+                }
+            }
+            if(window.location.href.indexOf('shipoptionselect') !== -1){
+                // In Reserve Time Slot Page
+                if($('input[name=continue-bottom]').length > 0){
+                    $('input[name=continue-bottom]').click();
+                }else{
+                    $('.ss-carousel-items > li').each((i, el) => {
+                        // Only Detect the first 5 Date
+                        if (i <= 5) {
+                            setTimeout(() => {
+                                $(el).find('.a-button-text').click();
+                                $('.Date-slot-container').each((i, el) => {
+                                    if($(el).attr('style').indexOf('block') !== -1){
+                                        $(el).find('.a-box.spanOutsideSlotButton').each((i, el) => {
                                             new Notification('Good News!', {
                                                 dir: 'ltr',
                                                 body: '\n Time Slot is ALAILABLE!!! \n Go Check it Out!!!',
                                                 icon: cart_icon
                                             });
+                                        })
+                                        if(!!$(el).find('span.a-size-base-plus').text() && !!$(el).find('span.a-size-base-plus').text().replace(/(^\s*)|(\s*$)/g, "") && $(el).find('span.a-size-base-plus').text().indexOf('No attended delivery') !== -1){
+                                            console.log('No time slot yet')
+                                        }else{
+                                            if(Notification.permission !== 'granted') {
+                                                new Notification('Good News!', {
+                                                    dir: 'ltr',
+                                                    body: '\n Time Slot is ALAILABLE!!! \n Go Check it Out!!!',
+                                                    icon: cart_icon
+                                                });
+                                            }
                                         }
                                     }
-                                }
-                            });
-                        }, i * 500)
-                    }
-                })
+                                });
+                            }, i * 500)
+                        }
+                    })
+            }
             }
             // refresh every 55 sec
             setTimeout(() => {
